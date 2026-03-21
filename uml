@@ -1,0 +1,13 @@
+@startuml
+
+"Администратор" as admin
+"Лаборант/Инженер" as user
+
+(Приложение) as app
+
+(Страница с оборудованием) as page_equipment
+(Страница с ремонтами) as page_repair
+(Страница управления) as page_command
+
+
+@enduml
