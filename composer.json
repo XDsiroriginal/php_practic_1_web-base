@@ -1,0 +1,16 @@
+{
+    "name": "gr434_hrdev/php_practic_1_web-base",
+    "description": "Web base",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "XDsir",
+            "email": "anna.sawhenko1984@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0"
+    }
+}
