@@ -1,13 +1,58 @@
 @startuml
+left to right direction
+skinparam packageStyle rectangle
 
-"Администратор" as admin
-"Лаборант/Инженер" as user
+actor "Администратор" as Admin
+actor "Лаборант/Инженер" as LabAssistant
 
-(Приложение) as app
+  
+  usecase "Авторизация" as UC_Auth
+  usecase "Поиск оборудования" as UC_Search
+  
+  usecase "Управление оборудованием\n(добавление/редактирование/\nудаление)" as UC_ManageEquip
+  usecase "Назначение ответственного\nза оборудование" as UC_AssignResp
+  usecase "Управление кафедрами" as UC_ManageDept
+  usecase "Ведение истории ремонтов" as UC_RepairHistory
+  usecase "Расчет амортизации и\nстоимости оборудования" as UC_CalcAmort
+  usecase "Управление пользователями" as UC_ManageUsers
+  usecase "Формирование отчетов" as UC_Reports
+  usecase "Списание оборудования" as UC_WriteOff
+  
+  usecase "Просмотр каталога\nоборудования" as UC_ViewCatalog
+  usecase "Просмотр деталей\nоборудования" as UC_ViewDetails
+  usecase "Регистрация неисправности" as UC_ReportFault
+  usecase "Обновление статуса\nоборудования" as UC_UpdateStatus
+  usecase "Просмотр закрепленного\nоборудования" as UC_ViewAssigned
+  usecase "Просмотр истории\nремонтов" as UC_ViewRepairs
 
-(Страница с оборудованием) as page_equipment
-(Страница с ремонтами) as page_repair
-(Страница управления) as page_command
+Admin --> UC_Auth
+Admin --> UC_Search
+Admin --> UC_ManageEquip
+Admin --> UC_AssignResp
+Admin --> UC_ManageDept
+Admin --> UC_RepairHistory
+Admin --> UC_CalcAmort
+Admin --> UC_ManageUsers
+Admin --> UC_Reports
+Admin --> UC_WriteOff
 
+LabAssistant --> UC_Auth
+LabAssistant --> UC_Search
+LabAssistant --> UC_ViewCatalog
+LabAssistant --> UC_ViewDetails
+LabAssistant --> UC_ReportFault
+LabAssistant --> UC_UpdateStatus
+LabAssistant --> UC_ViewAssigned
+LabAssistant --> UC_ViewRepairs
 
+UC_ManageEquip ..> UC_Auth : include
+UC_AssignResp ..> UC_ManageUsers : include
+UC_RepairHistory ..> UC_ManageEquip : include
+UC_CalcAmort ..> UC_ViewCatalog : include
+UC_Reports ..> UC_CalcAmort : include
+UC_Reports ..> UC_RepairHistory : include
+
+UC_ViewDetails ..> UC_ViewRepairs : extend
+UC_ReportFault ..> UC_RepairHistory : extend
+UC_UpdateStatus ..> UC_RepairHistory : extend
 @enduml
