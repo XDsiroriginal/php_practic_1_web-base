@@ -5,8 +5,6 @@ skinparam packageStyle rectangle
 actor "Администратор" as Admin
 actor "Лаборант/Инженер" as LabAssistant
 
-  
-  usecase "Авторизация" as UC_Auth
   usecase "Поиск оборудования" as UC_Search
   
   usecase "Управление оборудованием\n(добавление/редактирование/\nудаление)" as UC_ManageEquip
@@ -25,7 +23,6 @@ actor "Лаборант/Инженер" as LabAssistant
   usecase "Просмотр закрепленного\nоборудования" as UC_ViewAssigned
   usecase "Просмотр истории\nремонтов" as UC_ViewRepairs
 
-Admin --> UC_Auth
 Admin --> UC_Search
 Admin --> UC_ManageEquip
 Admin --> UC_AssignResp
@@ -36,7 +33,6 @@ Admin --> UC_ManageUsers
 Admin --> UC_Reports
 Admin --> UC_WriteOff
 
-LabAssistant --> UC_Auth
 LabAssistant --> UC_Search
 LabAssistant --> UC_ViewCatalog
 LabAssistant --> UC_ViewDetails
@@ -45,7 +41,6 @@ LabAssistant --> UC_UpdateStatus
 LabAssistant --> UC_ViewAssigned
 LabAssistant --> UC_ViewRepairs
 
-UC_ManageEquip ..> UC_Auth : include
 UC_AssignResp ..> UC_ManageUsers : include
 UC_RepairHistory ..> UC_ManageEquip : include
 UC_CalcAmort ..> UC_ViewCatalog : include
