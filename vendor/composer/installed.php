@@ -3,7 +3,7 @@
         'name' => 'gr434_hrdev/php_practic_1_web-base',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3a719ee8f64378b79b5c106e3e2736038db3f9c1',
+        'reference' => 'b3f85f5bff5c87c9308432480c5e1ef6a3d57492',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'gr434_hrdev/php_practic_1_web-base' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3a719ee8f64378b79b5c106e3e2736038db3f9c1',
+            'reference' => 'b3f85f5bff5c87c9308432480c5e1ef6a3d57492',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -145,6 +145,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'nikic/fast-route' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '1c961398bef1ff6ecd8b273bef651d7afe90312b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nikic/fast-route',
+            'aliases' => array(
+                0 => '2.0.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'psr/clock' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
@@ -176,6 +187,17 @@
             'provided' => array(
                 0 => '1.1|2.0',
             ),
+        ),
+        'psr/http-message' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '402d35bcb92c70c026d1a6a9883f06b2ead23d71',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-message',
+            'aliases' => array(
+                0 => '2.0.x-dev',
+            ),
+            'dev_requirement' => false,
         ),
         'psr/simple-cache' => array(
             'pretty_version' => 'dev-master',
