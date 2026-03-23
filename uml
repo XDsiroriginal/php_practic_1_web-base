@@ -6,7 +6,7 @@ actor "Администратор" as Admin
 actor "Лаборант/Инженер" as LabAssistant
 
   usecase "Поиск оборудования" as UC_Search
-  
+
   usecase "Управление оборудованием\n(добавление/редактирование/\nудаление)" as UC_ManageEquip
   usecase "Назначение ответственного\nза оборудование" as UC_AssignResp
   usecase "Управление кафедрами" as UC_ManageDept
@@ -14,13 +14,11 @@ actor "Лаборант/Инженер" as LabAssistant
   usecase "Расчет амортизации и\nстоимости оборудования" as UC_CalcAmort
   usecase "Управление пользователями" as UC_ManageUsers
   usecase "Формирование отчетов" as UC_Reports
-  usecase "Списание оборудования" as UC_WriteOff
-  
+
   usecase "Просмотр каталога\nоборудования" as UC_ViewCatalog
   usecase "Просмотр деталей\nоборудования" as UC_ViewDetails
   usecase "Регистрация неисправности" as UC_ReportFault
   usecase "Обновление статуса\nоборудования" as UC_UpdateStatus
-  usecase "Просмотр закрепленного\nоборудования" as UC_ViewAssigned
   usecase "Просмотр истории\nремонтов" as UC_ViewRepairs
 
 Admin --> UC_Search
@@ -31,14 +29,12 @@ Admin --> UC_RepairHistory
 Admin --> UC_CalcAmort
 Admin --> UC_ManageUsers
 Admin --> UC_Reports
-Admin --> UC_WriteOff
 
 LabAssistant --> UC_Search
 LabAssistant --> UC_ViewCatalog
 LabAssistant --> UC_ViewDetails
 LabAssistant --> UC_ReportFault
 LabAssistant --> UC_UpdateStatus
-LabAssistant --> UC_ViewAssigned
 LabAssistant --> UC_ViewRepairs
 
 UC_AssignResp ..> UC_ManageUsers : include
