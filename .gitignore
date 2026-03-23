@@ -1,2 +1,6 @@
 access.log
 error.log
+docker-compose.yml
+Dockerfile
+.env
+bd.php
