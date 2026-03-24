@@ -3,7 +3,7 @@
         'name' => 'gr434_hrdev/php_practic_1_web-base',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'b3f85f5bff5c87c9308432480c5e1ef6a3d57492',
+        'reference' => '96d08f3a60d79c16142c3e0949219fd33cf5a0b9',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'gr434_hrdev/php_practic_1_web-base' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b3f85f5bff5c87c9308432480c5e1ef6a3d57492',
+            'reference' => '96d08f3a60d79c16142c3e0949219fd33cf5a0b9',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
