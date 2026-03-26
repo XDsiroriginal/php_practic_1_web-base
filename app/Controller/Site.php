@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\Post;
 use Model\User;
+use Model\Department;
 
 use Src\View;
 use Src\Request;
@@ -25,10 +26,23 @@ class Site
 
     public function signup(Request $request): string
     {
-        if ($request->method === 'POST' && User::create($request->all())) {
-            app()->route->redirect('/go');
+        $departments = Department::all();
+
+        if ($request->method === 'POST') {
+            if (User::create([
+                'name' => $_POST['name'] ?? null,
+                'user_name' => $_POST['user_name'] ?? null,
+                'password' => $_POST['password'] ?? null,
+                'department_id' => $_POST['department_id'] ?? null,
+                'role' => 'user'
+            ])) {
+                app()->route->redirect('/hello');
+            }
         }
-        return new View('site.signup');
+
+        return new View('site.signup', [
+            'departments' => $departments
+        ]);
     }
 
     public function login(Request $request): string
@@ -38,7 +52,10 @@ class Site
             return new View('site.login');
         }
         //Если удалось аутентифицировать пользователя, то редирект
-        if (Auth::attempt($request->all())) {
+        if (Auth::attempt([
+            'user_name' => $request->get('user_name'),
+            'password' => $request->get('password'),
+        ])) {
             app()->route->redirect('/hello');
         }
         //Если аутентификация не удалась, то сообщение об ошибке

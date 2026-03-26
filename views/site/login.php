@@ -6,7 +6,7 @@
 if (!app()->auth::check()):
     ?>
     <form method="post">
-        <label>Логин <input type="text" name="login"></label>
+        <label>Логин <input type="text" name="user_name"></label>
         <label>Пароль <input type="password" name="password"></label>
         <button>Войти</button>
     </form>

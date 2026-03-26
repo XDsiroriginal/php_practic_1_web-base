@@ -22,7 +22,7 @@ class Auth
     public static function login(IdentityInterface $user): void
     {
         self::$user = $user;
-        Session::set('id', self::$user->getId());
+        Session::set('user_id', self::$user->getId());
     }
 
     //Аутентификация пользователя и вход по учетным данным
@@ -38,8 +38,8 @@ class Auth
     //Возврат текущего аутентифицированного пользователя
     public static function user()
     {
-        $id = Session::get('id') ?? 0;
-        return self::$user->findIdentity($id);
+        $user_id = Session::get('user_id') ?? 0;
+        return self::$user->findIdentity($user_id);
     }
 
     //Проверка является ли текущий пользователь аутентифицированным
