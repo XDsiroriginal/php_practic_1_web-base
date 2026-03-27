@@ -14,3 +14,4 @@ Route::add('GET', '/admin_control/department_control', [Controller\Site::class, 
 Route::add('GET', '/admin_control/equipment_control', [Controller\Site::class, 'equipment_control']);
 Route::add('GET', '/admin_control/user_control', [Controller\Site::class, 'user_control']);
 Route::add('GET', '/admin_control/user_control/add_user', [Controller\Site::class, 'user_create']);
+Route::add('GET', '/admin_control/user_control/user_details', [Controller\Site::class, 'user_details']);

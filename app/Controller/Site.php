@@ -101,4 +101,11 @@ class Site
     {
         app()->route->redirect('/signup');
     }
+
+    function user_details(Request $request): string
+    {
+        $user = User::where('user_id', $_GET['user_id'])->first();
+        $departments = Department::where('department_id', $user->department_id)->first();
+        return (new View())->render('site.admin_control.user_details', ['user' => $user, 'departments' => $departments]);
+    }
 }
