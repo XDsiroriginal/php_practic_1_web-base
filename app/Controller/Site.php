@@ -67,4 +67,38 @@ class Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
+
+    public function equipment(): string
+    {
+        return new View('site.equipment');
+    }
+
+    public function repair(): string
+    {
+        return new View('site.repair');
+    }
+
+    public function department() : string
+    {
+        return new View('site.department');
+    }
+
+    function department_control() : string
+    {
+        return new View('site.admin_control.department_control');
+    }
+    function equipment_control() : string
+    {
+        return new View('site.admin_control.equipment_control');
+    }
+    function user_control() : string
+    {
+        $users = User::all();
+        return new View('site.admin_control.user_control', ['users' => $users]);
+    }
+
+    function user_create(): void
+    {
+        app()->route->redirect('/signup');
+    }
 }

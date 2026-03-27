@@ -54,7 +54,7 @@ class Auth
     //Выход текущего пользователя
     public static function logout(): bool
     {
-        Session::clear('id');
+        Session::clear('user_id');
         return true;
     }
 
