@@ -94,7 +94,8 @@ class Site
     function user_control() : string
     {
         $users = User::all();
-        return new View('site.admin_control.user_control', ['users' => $users]);
+        $departments = Department::all();
+        return new View('site.admin_control.user_control', ['users' => $users, 'departments' => $departments]);
     }
 
     function user_create(): void
