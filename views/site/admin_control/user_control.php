@@ -52,12 +52,12 @@
                                 </td>
                                 <td>
                                     <?php
-                                    $description = $departments
-                                        ->where('department_id', $user->department_id)
-                                        ->first()
-                                        ->description;
-                                    if ($description): ?>
-                                        <?= htmlspecialchars($description); ?>
+                                    $department = $departments
+                                            ->where('department_id', $user->department_id)
+                                            ->first();
+
+                                    if ($department && !is_null($department->description)): ?>
+                                        <?= htmlspecialchars($department->description); ?>
                                     <?php else: ?>
                                         <span class="text-muted">—</span>
                                     <?php endif; ?>
