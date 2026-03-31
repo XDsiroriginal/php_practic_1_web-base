@@ -17,4 +17,4 @@ Route::add('GET', '/admin_control/user_control', [Controller\Site::class, 'user_
 Route::add('GET', '/admin_control/user_control/add_user', [Controller\Site::class, 'user_create'])->middleware('admin');
 Route::add('GET', '/admin_control/user_control/user_details', [Controller\Site::class, 'user_details'])->middleware('admin');
 
-Route::add('GET', '/error_403', [Controller\Site::class, 'error_403']);
+Route::add('GET', '/errors/error_403', [Controller\Site::class, 'error_403']);

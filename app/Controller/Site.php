@@ -94,7 +94,8 @@ class Site
     function user_control() : string
     {
         $users = User::all();
-        return new View('site.admin_control.user_control', ['users' => $users]);
+        $departments = Department::all();
+        return new View('site.admin_control.user_control', ['users' => $users, 'departments' => $departments]);
     }
 
     function user_create(): void
@@ -108,8 +109,9 @@ class Site
         $departments = Department::where('department_id', $user->department_id)->first();
         return (new View())->render('site.admin_control.user_details', ['user' => $user, 'departments' => $departments]);
     }
-    function error_403() : string
+
+    function error_403(): string
     {
-        return new View('site.error.error_403');
+        return (new View())->render('site.errors.error_403');
     }
 }

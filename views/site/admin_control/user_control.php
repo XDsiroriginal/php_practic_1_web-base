@@ -51,8 +51,13 @@
                                         </span>
                                 </td>
                                 <td>
-                                    <?php if (isset($user->department_description)): ?>
-                                        <?= htmlspecialchars($user->department_description); ?>
+                                    <?php
+                                    $description = $departments
+                                        ->where('department_id', $user->department_id)
+                                        ->first()
+                                        ->description;
+                                    if ($description): ?>
+                                        <?= htmlspecialchars($description); ?>
                                     <?php else: ?>
                                         <span class="text-muted">—</span>
                                     <?php endif; ?>
