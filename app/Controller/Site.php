@@ -9,6 +9,7 @@ use Model\Department;
 use Src\View;
 use Src\Request;
 use Src\Auth\Auth;
+use Src\Validator\Validator;
 
 
 class Site
@@ -24,26 +25,6 @@ class Site
         return new View('site.hello', ['message' => 'hello working']);
     }
 
-    public function signup(Request $request): string
-    {
-        $departments = Department::all();
-
-        if ($request->method === 'POST') {
-            if (User::create([
-                'name' => $_POST['name'] ?? null,
-                'user_name' => $_POST['user_name'] ?? null,
-                'password' => $_POST['password'] ?? null,
-                'department_id' => $_POST['department_id'] ?? null,
-                'role' => 'user'
-            ])) {
-                app()->route->redirect('/hello');
-            }
-        }
-
-        return new View('site.signup', [
-            'departments' => $departments
-        ]);
-    }
 
     public function login(Request $request): string
     {
@@ -113,5 +94,35 @@ class Site
     function error_403(): string
     {
         return (new View())->render('site.errors.error_403');
+    }
+
+    public function signup(Request $request): string
+    {
+        $departments = Department::all();
+        if ($request->method === 'POST') {
+
+            $validator = new Validator($request->all(), [
+                'name' => ['required'],
+                'user_name' => ['required', 'unique:users,user_name'],
+                'password' => ['required'],
+                'department_id' => ['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'unique' => 'Поле :field должно быть уникально'
+            ]);
+
+            if($validator->fails()){
+                return new View('site.signup',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
+            $data = $request->all();
+            $data['role'] = 'user';
+
+            if (User::create($data)) {
+                app()->route->redirect('/admin_control/user_control');
+            }
+        }
+        return new View('site.signup',['departments' => $departments]);
     }
 }

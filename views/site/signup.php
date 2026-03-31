@@ -13,6 +13,7 @@
                             <?= $message; ?>
                         </div>
                     <?php else: ?>
+                        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
                         <form method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Имя</label>
