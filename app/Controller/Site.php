@@ -25,24 +25,6 @@ class Site
         return new View('site.hello', ['message' => 'hello working']);
     }
 
-
-    public function login(Request $request): string
-    {
-        //Если просто обращение к странице, то отобразить форму
-        if ($request->method === 'GET') {
-            return new View('site.login');
-        }
-        //Если удалось аутентифицировать пользователя, то редирект
-        if (Auth::attempt([
-            'user_name' => $request->get('user_name'),
-            'password' => $request->get('password'),
-        ])) {
-            app()->route->redirect('/hello');
-        }
-        //Если аутентификация не удалась, то сообщение об ошибке
-        return new View('site.login', ['message' => 'Неправильные логин или пароль']);
-    }
-
     public function logout(): void
     {
         Auth::logout();
@@ -124,5 +106,21 @@ class Site
             }
         }
         return new View('site.signup',['departments' => $departments]);
+    }
+    public function login(Request $request): string
+    {
+        //Если просто обращение к странице, то отобразить форму
+        if ($request->method === 'GET') {
+            return new View('site.login');
+        }
+        //Если удалось аутентифицировать пользователя, то редирект
+        if (Auth::attempt([
+            'user_name' => $request->get('user_name'),
+            'password' => $request->get('password'),
+        ])) {
+            app()->route->redirect('/hello');
+        }
+        //Если аутентификация не удалась, то сообщение об ошибке
+        return new View('site.login', ['message' => 'Неправильные логин или пароль']);
     }
 }

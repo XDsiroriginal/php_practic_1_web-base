@@ -15,8 +15,8 @@
                     <?php endif; ?>
 
                     <?php if (!app()->auth::check()): ?>
-                        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
                         <form method="post">
+                            <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
                             <div class="mb-3">
                                 <label for="user_name" class="form-label">Логин</label>
                                 <input type="text"
