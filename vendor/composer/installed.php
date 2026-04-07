@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'gr434_hrdev/php_practic_1_web-base',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '96d08f3a60d79c16142c3e0949219fd33cf5a0b9',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'gr434_hrdev/php_practic_1_web-base' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '96d08f3a60d79c16142c3e0949219fd33cf5a0b9',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

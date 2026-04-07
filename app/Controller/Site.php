@@ -31,11 +31,6 @@ class Site
         app()->route->redirect('/hello');
     }
 
-    public function equipment(): string
-    {
-        return new View('site.equipment');
-    }
-
     public function repair(): string
     {
         return new View('site.repair');

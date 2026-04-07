@@ -7,7 +7,7 @@ Route::add('GET', '/hello', [Controller\Site::class, 'hello'])
 Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup'])->middleware('auth', 'admin');
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout'])->middleware('auth');
-Route::add('GET', '/equipment', [Controller\Site::class, 'equipment'])->middleware('auth');
+Route::add('GET', '/equipment', [Controller\userController\EquipmentController::class, 'equipment'])->middleware('auth');
 Route::add('GET', '/repair', [Controller\Site::class, 'repair'])->middleware('auth');
 Route::add('GET', '/department', [Controller\userController\DepartmentController::class, 'department'])->middleware('auth');
 

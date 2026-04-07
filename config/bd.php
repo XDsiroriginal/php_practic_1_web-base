@@ -1,8 +1,8 @@
 <?php
 return [
     'driver' => 'mysql',
-    'host' => 'db',  // ← изменили на имя сервиса из docker-compose
-    'database' => 'rpnakmdr-5',
+    'host' => 'localhost',  // ← изменили на имя сервиса из docker-compose
+    'database' => 'rpnakmdr_m5',
     'username' => 'rpnakmdr',
     'password' => 'nKT3pK',
     'charset' => 'utf8',
