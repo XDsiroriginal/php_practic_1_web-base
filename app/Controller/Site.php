@@ -41,11 +41,6 @@ class Site
         return new View('site.repair');
     }
 
-    public function department() : string
-    {
-        return new View('site.department');
-    }
-
     function department_control() : string
     {
         return new View('site.admin_control.department_control');
