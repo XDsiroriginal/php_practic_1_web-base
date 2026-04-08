@@ -12,7 +12,10 @@ class Department extends Model
     protected $table = 'department';
     public $timestamps = false;
 
+    protected $primaryKey = 'department_id';
+
     protected $fillable = [
+
         'name',
         'code',
         'description',

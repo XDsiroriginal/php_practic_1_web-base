@@ -12,7 +12,7 @@ use Src\Auth\Auth;
 
 class DepartmentController
 {
-    public function department() : string
+    public function department(): string
     {
         $user = Auth::user();
         $departments = Department::where('department_id', $user->department_id)->first();
