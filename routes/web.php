@@ -12,7 +12,7 @@ Route::add('GET', '/repair', [Controller\Site::class, 'repair'])->middleware('au
 Route::add('GET', '/department', [Controller\userController\DepartmentController::class, 'department'])->middleware('auth');
 
 Route::add('GET', '/admin_control/department_control', [Controller\adminControl\DepartmentControlController::class, 'departmentControl'])->middleware('admin', 'auth');
-Route::add('GET', '/admin_control/equipment_control', [Controller\Site::class, 'equipment_control'])->middleware('admin', 'auth');
+Route::add('GET', '/admin_control/equipment_control', [Controller\adminControl\EquipmentControlController::class, 'equipmentControl'])->middleware('admin', 'auth');
 Route::add('GET', '/admin_control/user_control', [Controller\Site::class, 'user_control'])->middleware('admin', 'auth');
 Route::add('GET', '/admin_control/user_control/add_user', [Controller\Site::class, 'user_create'])->middleware('admin', 'auth');
 Route::add('GET', '/admin_control/user_control/user_details', [Controller\Site::class, 'user_details'])->middleware('admin', 'auth');
@@ -21,3 +21,5 @@ Route::add('GET', '/errors/error_403', [Controller\Site::class, 'error_403']);
 
 Route::add(['GET', 'POST'], '/admin_control/department_control/department_add', [Controller\adminControl\DepartmentControlController::class, 'addDepartment'])->middleware('admin', 'auth');
 Route::add(['GET', 'POST'], '/admin_control/department_control/department_change', [Controller\adminControl\DepartmentControlController::class, 'changeDepartment'])->middleware('admin', 'auth');
+
+Route::add(['GET', 'POST'], '/admin_control/equipment_control/equipment_add', [Controller\adminControl\DepartmentControlController::class, 'addEquipment'])->middleware('admin', 'auth');

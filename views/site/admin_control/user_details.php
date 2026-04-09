@@ -48,15 +48,6 @@
                             </span>
                         </div>
                     </div>
-
-<!--                    <div class="mt-4 pt-3 border-top text-center">-->
-<!--                        <a href="/users" class="btn btn-outline-secondary me-2">-->
-<!--                            <i class="bi bi-arrow-left"></i> Назад к списку-->
-<!--                        </a>-->
-<!--                        <a href="/profile/edit/--><?php //= $user->user_id; ?><!--" class="btn btn-primary">-->
-<!--                            <i class="bi bi-pencil-square"></i> Редактировать-->
-<!--                        </a>-->
-<!--                    </div>-->
                 </div>
             </div>
         </div>
