@@ -48,7 +48,7 @@ class DepartmentControlController
 
     public function changeDepartment(Request $request) : string
     {
-        $department = Department::where('department_id', $_GET['department_id'])->first();
+            $department = Department::where('department_id', $_GET['department_id'])->first();
 
         if ($request->method === 'POST') {
             $department->name = $request->name;
