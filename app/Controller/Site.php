@@ -35,10 +35,6 @@ class Site
     {
         return new View('site.repair');
     }
-    function equipment_control() : string
-    {
-        return new View('site.admin_control.equipment_control');
-    }
     function user_control() : string
     {
         $users = User::all();
