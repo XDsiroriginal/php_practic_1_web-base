@@ -36,26 +36,30 @@ class Validator
     //Валидация отдельного поля
     private function validateField(string $fieldName, array $fieldValidators): void
     {
-        //Перебираем все валидаторы, ассоциированные с полем
-        foreach ($fieldValidators as $validatorName) {
-            //Отделяем от имени валидатора дополнительные аргументы
-            $tmp = explode(':', $validatorName);
-            [$validatorName, $args] = count($tmp) > 1 ? $tmp : [$validatorName, null];
-            $args = isset($args) ? explode(',', $args) : [];
+        $value = $this->fields[$fieldName] ?? null;
 
-            //Соотносим имя валидатора с классом в массиве разрешенных валидаторов
-            $validatorClass = $this->validators[$validatorName];
+        foreach ($fieldValidators as $validatorName) {
+            $parts = explode(':', $validatorName);
+            $ruleName = $parts[0];
+            $args = isset($parts[1]) ? explode(',', $parts[1]) : [];
+
+            if (!isset($this->validators[$ruleName])) {
+                continue;
+            }
+
+            if ($ruleName === 'nullable' && ($value === null || $value === '')) {
+                return;
+            }
+
+            $validatorClass = $this->validators[$ruleName];
             if (!class_exists($validatorClass)) {
                 continue;
             }
-            //Создаем объект валидатора, передаем туда параметры
-            $validator = new $validatorClass(
-                $fieldName,
-                $this->fields[$fieldName],
-                $args,
-                $this->messages[$validatorName]);
 
-            //Если валидация не прошла, то добавляем ошибку в общий массив ошибок
+            $message = $this->messages[$ruleName] ?? '';
+
+            $validator = new $validatorClass($fieldName, $value, $args, $message);
+
             if (!$validator->rule()) {
                 $this->errors[$fieldName][] = $validator->validate();
             }

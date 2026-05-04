@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Couchbase\Role;
 use Model\Post;
 use Model\User;
 use Model\Department;
@@ -49,9 +50,51 @@ class Site
 
     function user_details(Request $request): string
     {
-        $user = User::where('user_id', $_GET['user_id'])->first();
-        $departments = Department::where('department_id', $user->department_id)->first();
-        return (new View())->render('site.admin_control.user_details', ['user' => $user, 'departments' => $departments]);
+        $userId = $request->get('user_id');
+        $user = User::where('user_id', $userId)->first();
+        if (!$user) {
+            return $this->error_403();
+        }
+
+        $departments = Department::all();
+
+        if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'name'          => ['required'],
+                'user_name'     => ['required'],
+                'role'          => ['required'],
+                'department_id' => ['required'],
+                'password'      => ['nullable', 'min:4'],
+            ], [
+                'required' => 'Поле :field обязательно для заполнения',
+                'min'      => 'Поле :field должно содержать минимум :min символов'
+            ]);
+
+            if ($validator->fails()) {
+                return (new View())->render('site.admin_control.user_details', [
+                    'user' => $user,
+                    'departments' => $departments,
+                    'errors' => $validator->errors(),
+                ]);
+            }
+
+            $data = $request->all();
+            if (!empty($data['password'])) {
+                $data['password'] = md5($data['password']);
+            } else {
+                unset($data['password']);
+            }
+
+            $allowed = ['name', 'user_name', 'role', 'department_id', 'password'];
+            $updateData = array_intersect_key($data, array_flip($allowed));
+            $user->update($updateData);
+            app()->route->redirect('/admin_control/user_control');
+        }
+
+        return (new View())->render('site.admin_control.user_details', [
+            'user' => $user,
+            'departments' => $departments,
+        ]);
     }
 
     function error_403(): string

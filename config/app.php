@@ -10,8 +10,10 @@ return [
         'admin' => \Middlewares\AdminMiddleware::class,
     ],
     'validators' => [
-    'required' => \Validators\RequireValidator::class,
-    'unique' => \Validators\UniqueValidator::class
+        'required' => \Validators\RequireValidator::class,
+        'unique'   => \Validators\UniqueValidator::class,
+        'min'      => \Validators\MinValidator::class,
+        'nullable' => \Validators\NullableValidator::class,
     ],
     'routeAppMiddleware' => [
         'trim' => \Middlewares\TrimMiddleware::class,

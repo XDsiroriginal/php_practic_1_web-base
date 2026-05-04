@@ -45,6 +45,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= app()->route->getUrl('/repair') ?>">
+                            <i class="bi bi-tools me-1"></i>поломка и ремонты
+                        </a>
+                    </li>
+
                     <?php if (app()->auth::check() && app()->auth::user()->role == 'ADMIN'): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
