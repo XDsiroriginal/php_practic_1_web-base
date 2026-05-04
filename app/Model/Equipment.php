@@ -11,6 +11,8 @@ class Equipment extends Model
     protected $table = 'equipment';
     public $timestamps = false;
 
+    protected $primaryKey = 'equipment_id';
+
     protected $fillable = [
         'name',
         'model',

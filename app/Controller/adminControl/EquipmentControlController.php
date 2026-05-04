@@ -43,11 +43,11 @@ class EquipmentControlController
                 'name' => $request->name ?? null,
                 'model' => $request->model ?? null,
                 'manufacturer' => $request->manufacturer ?? null,
-                'commission_date' => !empty($request->commission_date) ? $request->commission_date : null,
-                'cost' => !empty($request->cost) ? floatval($request->cost) : null,
-                'status_id' => !empty($request->status_id) ? intval($request->status_id) : null,
-                'user_id' => !empty($request->user_id) ? intval($request->user_id) : null,
-                'department_id' => !empty($request->department_id) ? intval($request->department_id) : null,
+                'commission_date' => $request->commission_date ?? null,
+                'cost' => $request->cost ?? null,
+                'status_id' => $request->status_id ?? null,
+                'user_id' => $request->user_id ?? null,
+                'department_id' => $request->department_id ?? null,
             ];
 
             Equipment::create($equipment);
@@ -70,14 +70,14 @@ class EquipmentControlController
         $equipment = Equipment::where('equipment_id', $_GET['equipment_id'])->first();
 
         if ($request->method === 'POST') {
-            $equipment->name = $request->name ?? null;
-            $equipment->model = $request->model ?? null;
-            $equipment->manufacturer = $request->manufacturer ?? null;
-            $equipment->commission_date = !empty($request->commission_date) ? $request->commission_date : null;
-            $equipment->cost = !empty($request->cost) ? floatval($request->cost) : null;
-            $equipment->status_id = !empty($request->status_id) ? intval($request->status_id) : null;
-            $equipment->user_id = !empty($request->user_id) ? intval($request->user_id) : null;
-            $equipment->department_id = !empty($request->department_id) ? intval($request->department_id) : null;
+            $equipment->name = $request->name;
+            $equipment->model = $request->model;
+            $equipment->manufacturer = $request->manufacturer;
+            $equipment->commission_date = $request->commission_date;
+            $equipment->cost = $request->cost;
+            $equipment->status_id = $request->status_id;
+            $equipment->user_id = $request->user_id;
+            $equipment->department_id = $request->department_id;
             $equipment->update();
 
             app()->route->redirect('/admin_control/equipment_control');
