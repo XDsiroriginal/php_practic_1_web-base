@@ -32,4 +32,27 @@ class RepairController
             'repairs' => $repair
         ]);
     }
+
+    public function add_repair(Request $request): string
+    {
+        $user = Auth::user();
+        if ($request->method === 'POST') {
+
+            $repair = [
+                'equipment_id' => $request->equipment ?? null,
+                'break_message' => $request->break_message ?? null,
+                'user_id' => $user->user_id,
+            ];
+
+            Repair::create($repair);
+            app()->route->redirect('/repair');
+        } else {
+            $equipment = Equipment::where('user_id', $user->user_id)->get();
+
+            return (new View())->render('site.add_repair', [
+                'equipments' => $equipment,
+                'users' => $user,
+            ]);
+        }
+    }
 }
