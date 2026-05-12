@@ -70,7 +70,12 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="<?= app()->route->getUrl('/admin_control/equipment_control') ?>">
-                                        <i class="bi bi-tools me-2"></i>Управление оборудованием
+                                        <i class="bi bi-pc-display me-1"></i>Управление оборудованием
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="<?= app()->route->getUrl('/admin_control/repair_control') ?>">
+                                        <i class="bi bi-tools me-2"></i>Управление ремонтами
                                     </a>
                                 </li>
                             </ul>

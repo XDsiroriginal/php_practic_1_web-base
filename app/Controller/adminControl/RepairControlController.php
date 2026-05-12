@@ -41,4 +41,41 @@ class RepairControlController
 
         ]);
     }
+
+    public function repairChange(Request $request): string
+    {
+        $repair = Repair::where('repair_id', $_GET['repair_id'])->first();
+        $equipment = Equipment::where('equipment_id', $repair->equipment_id )->first();
+
+        if ($request->method === 'POST') {
+            $repair->repair_start_date = $request->repair_start_date;
+            $repair->repair_end_date = $request->repair_end_date;
+            $repair->cost = $request->cost;
+            $repair->work_performed = $request->work_performed;
+            $repair->status = $request->status;
+            $repair->update();
+
+            if ($request->status == 'COMPLETED') {
+                $equipment->status_id = 1;
+            }
+            else {
+                $equipment->status_id = 2;
+            }
+            $equipment->update();
+
+            app()->route->redirect('/admin_control/repair_control');
+        } else {
+            $departments = Department::all();
+            $statuses = Status::all();
+            $users = User::all();
+
+            return (new View())->render('site.admin_control.repair_change', [
+                'equipment' => $equipment,
+                'departments' => $departments,
+                'statuses' => $statuses,
+                'users' => $users,
+                'repair' => $repair,
+            ]);
+        }
+    }
 }

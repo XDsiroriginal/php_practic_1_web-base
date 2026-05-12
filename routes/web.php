@@ -26,3 +26,5 @@ Route::add(['GET', 'POST'], '/admin_control/equipment_control/equipment_add', [C
 Route::add(['GET', 'POST'], '/admin_control/equipment_control/equipment_change', [Controller\adminControl\EquipmentControlController::class, 'changeEquipment'])->middleware('admin', 'auth');
 
 Route::add(['GET', 'POST'], '/repair/add_repair', [Controller\userController\RepairController::class, 'add_repair'])->middleware('auth');
+Route::add(['GET', 'POST'], '/admin_control/repair_control', [Controller\adminControl\RepairControlController::class, 'repairControl'])->middleware('auth', 'admin');
+Route::add(['GET', 'POST'], '/admin_control/repair_change', [Controller\adminControl\RepairControlController::class, 'repairChange'])->middleware('auth', 'admin');
