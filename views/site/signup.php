@@ -12,6 +12,9 @@
                         <div class="alert alert-info text-center" role="alert">
                             <?= $message; ?>
                         </div>
+                        <a href="signup" class="btn btn-primary btn-lg">
+                            Домой
+                        </a>
                     <?php else: ?>
                         <form method="post">
                             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>

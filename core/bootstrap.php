@@ -8,7 +8,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 //Функция, возвращающая массив всех настроек приложения
 function getConfigs(string $path = DIR_CONFIG): array
 {
-    $settings = [];
+    $settings = require __DIR__ . '/../config/app.php';
+    // Удалено: app()->settings->app = $settings;
     foreach (scandir(__DIR__ . $path) as $file) {
         $name = explode('.', $file)[0];
         if (!empty($name)) {

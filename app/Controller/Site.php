@@ -108,8 +108,8 @@ class Site
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
-                'name' => ['required', 'not_empty'],
-                'user_name' => ['required', 'unique:users,user_name'],
+                'name' => ['required'],
+                'user_name' => ['required', 'unique:user,user_name'],
                 'password' => ['required']
             ], [
                 'required' => 'Поле :field пусто',
@@ -117,8 +117,10 @@ class Site
             ]);
 
             if($validator->fails()){
-                return new View('site.signup',
-                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                return new View('site.signup', [
+                    'departments' => $departments,
+                    'message' => 'заполните все необходимые поля'
+                ]);
             }
 
             $data = $request->all();
