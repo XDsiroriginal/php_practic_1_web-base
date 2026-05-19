@@ -22,7 +22,7 @@
                                        id="name"
                                        name="name"
                                        placeholder="Введите имя"
-                                       required>
+                                       >
                             </div>
 
                             <div class="mb-3">

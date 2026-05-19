@@ -25,8 +25,7 @@ abstract class AbstractValidator
         $this->messageKeys = [
             ":value" => $this->value,
             ":field" => $this->field
-        ];
-    }
+        ];  }
 
     //Если правило валидации не прошло, то возвращаем сообщение об ошибке
     public function validate()

@@ -80,8 +80,7 @@ class Route
         if (false !== $pos = strpos($uri, '?')) {
             $uri = substr($uri, 0, $pos);
         }
-        $uri = rawurldecode($uri);
-        $uri = substr($uri, strlen($this->prefix));
+        $uri = rawurldecode($uri);$uri = substr($uri, strlen($this->prefix));
 
         $dispatcher = new Dispatcher($this->routeCollector->getData());
 

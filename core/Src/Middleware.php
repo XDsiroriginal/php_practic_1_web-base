@@ -38,6 +38,7 @@ class Middleware
         return $dispatcherMiddleware->dispatch($httpMethod, $uri)[1] ?? [];
     }
 
+//Запуск всех middlewares для текущего маршрута
     public function go(string $httpMethod, string $uri, Request $request): Request
     {
         return $this->runMiddlewares($httpMethod, $uri, $this->runAppMiddlewares($request));
