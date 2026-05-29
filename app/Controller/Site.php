@@ -128,6 +128,7 @@ class Site
 
             if (User::create($data)) {
                 app()->route->redirect('/admin_control/user_control');
+                return false;
             }
         }
         return new View('site.signup',['departments' => $departments]);
