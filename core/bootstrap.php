@@ -20,7 +20,7 @@ function getConfigs(string $path = DIR_CONFIG): array
 }
 
 require_once __DIR__ . '/../routes/web.php';
-$app = new Src\Application(new Src\Settings(getConfigs()));
+$app = new \Src\Traits\Application(new Src\Settings(getConfigs()));
 
 //Функция возвращает глобальный экземпляр приложения
 function app() {

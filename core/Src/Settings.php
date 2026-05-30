@@ -33,6 +33,7 @@ class Settings
 
     public function getDbSetting(): array
     {
-        return $this->_settings['bd'] ?? [];
+        // __get() обращается к $this->_settings['db']
+        return $this->db ?? [];
     }
 }

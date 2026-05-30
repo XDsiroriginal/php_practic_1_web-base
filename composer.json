@@ -21,8 +21,11 @@
     "autoload": {
         "psr-4": {
             "Src\\": "core/Src/",
-            "": "app/",
-            "Validators\\": "core/Src/Validator"
+            "Controller\\": "app/Controller/",
+            "Model\\": "app/Model/",
+            "Providers\\": "app/Providers/",
+            "Middlewares\\": "app/Middlewares/",
+            "Validators\\": "app/Validators/"
         }
     }
 }

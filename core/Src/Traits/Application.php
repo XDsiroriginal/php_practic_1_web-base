@@ -1,12 +1,14 @@
 <?php
 
-namespace Src;
+namespace Src\Traits;
 
 use Error;
 use Illuminate\Container\Container;
-use Illuminate\Events\Dispatcher;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
 use Src\Auth\Auth;
+use Src\Route;
+use Src\Settings;
 
 class Application
 {
@@ -46,17 +48,10 @@ class Application
         throw new Error('Accessing a non-existent property');
     }
 
-    public function __set($key, $value): void
-    {
-        if ($key === 'route') {
-            $this->route = $value;
-            return;
-        }
-        throw new Error('Setting a non-existent property');
-    }
-
     private function dbRun()
     {
+        $dbConfig = $this->settings->getDbSetting();
+
         $this->dbManager->addConnection($this->settings->getDbSetting());
         $this->dbManager->setEventDispatcher(new Dispatcher(new Container));
         $this->dbManager->setAsGlobal();
